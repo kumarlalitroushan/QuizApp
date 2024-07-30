@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Embedded CSS */
+
+        /* Reset some basic elements */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General body styles */
+        body,
+        html {
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main container */
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Title and paragraph styles */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        p {
+            color: #666666;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons styles */
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: #4a90e2;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #357ab8;
+        }
+
+        /* Form styles */
+        .login-form {
+            display: none;
+            text-align: left;
+        }
+
+        .login-form h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #333333;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background: #4a90e2;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #357ab8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h1>Welcome To Quizy!</h1>
+            <p>Please select your login type:</p>
+            <div class="buttons">
+                <button class="btn" id="student-btn">Student Login</button>
+                <button class="btn" id="authority-btn">Authority Login</button>
+            </div>
+            <div id="form-container">
+                <!-- Student Login Form -->
+                <form id="student-form" class="login-form">
+                    <h2>Student Login</h2>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit" class="submit-btn">Sign In</button>
+                </form>
+
+                <!-- Authority Login Form -->
+                <form id="authority-form" class="login-form">
+                    <h2>Authority Login</h2>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit" class="submit-btn">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        // JavaScript for toggling between forms
+
+        document.getElementById('student-btn').addEventListener('click', function () {
+            document.getElementById('student-form').style.display = 'block';
+            document.getElementById('authority-form').style.display = 'none';
+        });
+
+        document.getElementById('authority-btn').addEventListener('click', function () {
+            document.getElementById('authority-form').style.display = 'block';
+            document.getElementById('student-form').style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>
