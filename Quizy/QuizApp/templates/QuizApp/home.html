@@ -1,0 +1,17 @@
+{% extends "QuizApp/Base.html" %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'QuizApp/homepage.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>SELECT SUBJECT/TOPIC TO START</h1>
+    <div class="button-group">
+        <button class="subject-button">Maths</button>
+        <button class="subject-button">Science</button>
+        <button class="subject-button">Computer</button>
+        <button class="subject-button">History</button>
+    </div>
+</div>
+{% endblock %}
