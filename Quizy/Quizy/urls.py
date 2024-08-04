@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('QuizApp.urls')),
+    # path('users',include('Users.urls'))
 ]

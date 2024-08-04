@@ -1,17 +1,21 @@
 {% extends "QuizApp/Base.html" %}
 {% load static %}
+{% block title %}home{% endblock %}
 {% block style %}
-    <link rel="stylesheet" type="text/css" href="{% static 'QuizApp/homepage.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'QuizApp/homepage.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="content">
     <h1>SELECT SUBJECT/TOPIC TO START</h1>
-    <div class="button-group">
-        <button class="subject-button">Maths</button>
-        <button class="subject-button">Science</button>
-        <button class="subject-button">Computer</button>
-        <button class="subject-button">History</button>
-    </div>
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <div class="button-group">
+            <button type="submit" name="subject" value="Mathematics" class="subject-button">Mathematics</button>
+            <button type="submit" name="subject" value="Science" class="subject-button">Science</button>
+            <button type="submit" name="subject" value="Computer" class="subject-button">Computer</button>
+            <button type="submit" name="subject" value="History" class="subject-button">History</button>
+        </div>
+    </form>
 </div>
 {% endblock %}

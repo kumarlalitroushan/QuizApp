@@ -1,0 +1,55 @@
+<!-- questionsPage.html -->
+{% extends "QuizApp/Base.html" %}
+{% load static %}
+
+{% block title %}Questions for {{ class.name }} - {{ subject }}{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'QuizApp/questionsPage.css' %}">
+{% endblock %}
+
+{% block content%}
+<div class="container">
+    <h2>Subject: {{ subject }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <ul>
+            {% for question in questions %}
+            <li class="question">
+                <strong>{{ question.question_text }}</strong>
+                <ul class="options">
+                    <li>
+                        <label>
+                            <input type="radio" name="answer_{{ question.id }}" value="{{ question.option1 }}">
+                            {{ question.option1 }}
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="answer_{{ question.id }}" value="{{ question.option2 }}">
+                            {{ question.option2 }}
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="answer_{{ question.id }}" value="{{ question.option3 }}">
+                            {{ question.option3 }}
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="answer_{{ question.id }}" value="{{ question.option4 }}">
+                            {{ question.option4 }}
+                        </label>
+                    </li>
+                </ul>
+            </li>
+            {% empty %}
+            <li>No questions available for this class and subject.</li>
+            {% endfor %}
+        </ul>
+        <button type="submit" class="submit-btn">Submit Answers</button>
+    </form>
+</div>
+{% endblock %}
+
