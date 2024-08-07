@@ -5,4 +5,5 @@ urlpatterns = [
     path('login/', views.login_page, name='login_page'),
     path('home/', views.home, name='home'),
     path('questions/<str:subject_name>/', views.questions_page, name='questions_page'),
+    path('create-question/', views.create_question, name='create_question'),
 ]

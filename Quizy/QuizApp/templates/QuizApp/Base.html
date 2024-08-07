@@ -75,16 +75,30 @@
             }
         }
 
+
     </style>
     {% block style %}{% endblock%}
 </head>
 <body>
-<nav class="navbar">
-    <div class="brand">Quizy</div>
-    <div class="organization">DAV PUBLIC SCHOOL</div>
-    <div class="profile">Profile ID: 12345</div>
+<nav>
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        {% if user.is_authenticated and user.user_type == 'teacher' %}
+        <li><a href="{% url 'create_question' %}">Create Question</a></li>
+        {% endif %}
+        <li>
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a href="{% url 'login_page' %}">Login</a>
+            {% endif %}
+        </li>
+    </ul>
 </nav>
-{% block content%}
-{% endblock %}
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
 </body>
 </html>

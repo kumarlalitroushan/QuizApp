@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .models import Class, Subject, Question
+from django.core.exceptions import PermissionDenied
+from django.contrib.auth.decorators import login_required
+from .forms import QuestionForm
 
 
 def login_page(request):
@@ -29,3 +32,22 @@ def questions_page(request, subject_name):
         'questions': questions,
     }
     return render(request, 'QuizApp/questionsPage.html', context)
+
+
+@login_required
+def create_question(request):
+    if request.user.user_type != 'teacher':
+        raise PermissionDenied("You do not have permission to add questions.")
+
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            question = form.save(commit=False)
+            question.teacher = request.user
+            question.save()
+            return redirect('home')
+    else:
+        form = QuestionForm()
+
+    context = {'form': form}
+    return render(request, 'QuizApp/create_question.html', context)
